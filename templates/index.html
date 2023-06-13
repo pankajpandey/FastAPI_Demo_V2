@@ -1,0 +1,33 @@
+<link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+<body>
+  <div class="list-group">
+        <div class="d-flex w-100 justify-content-between">
+          <table id='properties' class="table table-dark table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Type</th>
+                <th scope="col">Rent</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for value in properties %}
+              <tr>
+                <td>{{ value.name }}</td>
+                <td>{{ value.address }}</td>
+                <td>{{ value.type }}</td>
+                <td>{{ value.rent }}</td>              
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table><br>
+          <div class="buttons">
+            <div class="action_btn">
+              <button name="submit" class="action_btn submit" type="submit" onclick="location.href='http://localhost:8000/add_property_form'">Add Property</button>
+              <button name="submit" class="action_btn cancel" type="submit" onclick="location.href='http://localhost:8000/update_property_form'">Update Property</button>
+            </div>
+          </div>
+        </div>
+   </div>
+</body>

@@ -1,0 +1,37 @@
+<link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+<form action="/add_property/" method="POST" enctype="application/x-www-form-urlencoded">
+    <h2>Kindly add property details below:</h2>
+    <div class="row" style="width: 50%;">
+        <div class="col-md-6">
+            <label for="">Property Name:</label>
+            <input type="text" class="form-control"  name="name" />
+        </div>
+        <div class="col-md-6">
+            <label for="">Address:</label>
+            <input type="text" class="form-control" name="address" />
+        </div>
+        <div class="col-md-6">
+            <label for="">Type:</label>
+            <select name="type" id="" class="form-control">
+                <option value=""></option>
+                <option value="1BHK">1BHK</option>
+                <option value="2BHK">2BHK</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="">Rent:</label>
+            <input type="number" class="form-control" name="rent" />
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-info mt-4">Save Records</button>
+        </div>
+    </div>
+</form>
+<div class="row" style='width: 50%;'>
+    <div class="buttons">
+        <div class="action_btn">
+          <button name="submit" class="action_btn submit" type="submit" onclick="location.href='http://localhost:8000/properties'">View Properties</button>
+          <button name="submit" class="action_btn cancel" type="submit" onclick="location.href='http://localhost:8000/update_property_form'">Update Property</button>
+        </div>
+      </div>
+</div>

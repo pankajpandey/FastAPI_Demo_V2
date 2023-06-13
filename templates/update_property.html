@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Update property address:</title>
+</head>
+<body>
+    <form method="POST" id="updatePropertyForm">
+        <div class="row" style='width: 50%;'>
+            <div class="col-md-12">
+                <label for="name" style="font-size: larger;font-weight: bold;">Choose a property:</label>
+                <select name="name" id="name">
+                    {% for value in properties %}
+                        <option value={{value.id}}> {{ value.name}} </option>
+                    {% endfor %}
+                </select>
+                <br><br>
+            </div>
+            <div class="col-md-12">
+                <label for="">Address:</label>
+                <input type='text' class="form-control" id="address" />
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-info mt-4">Update Address</button>
+            </div>
+        </div>
+    </form>
+    <div class="row" style='width: 50%;'>
+        <div class="buttons">
+            <div class="action_btn">
+              <button name="submit" class="action_btn submit" type="submit" onclick="location.href='http://localhost:8000/properties'">View Properties</button>
+              <button name="submit" class="action_btn cancel" type="submit" onclick="location.href='http://localhost:8000/add_property_form'">Add Property</button>
+            </div>
+          </div>
+    </div>
+
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+    <script>
+        form = document.getElementById("updatePropertyForm");
+        function updatePropertyForm(name, address) {
+            fetch("/update_property/", {
+                method: "PATCH",
+                body: JSON.stringify({name,address,}),
+            }).then(function(data) {
+                console.log(data);
+                window.alert("Address updated successfully !!!");
+            }).catch(function(err) {
+                console.log('Fetch Error :-S', err);
+            });
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            updatePropertyForm(name, address);
+        });
+    </script>
+</body>
